@@ -6,26 +6,7 @@
     version: "{{ bash_it_repo_version }}"
     accept_hostkey: "{{ bash_it_repo_accept_hostkey }}"
 
-- name: Install bash_it plugins
-  file:
-    src: "{{ bash_it_repo_local_destination }}/plugins/available/{{ item }}.plugin.bash"
-    dest: "{{ bash_it_repo_local_destination }}/plugins/enabled/{{ item }}.plugin.bash"
-    state: link
-  with_items: "{{ bash_it_plugins }}"
-  when: bash_it_plugins is defined
-
-- name: Install bash_it aliases
-  file:
-    src: "{{ bash_it_repo_local_destination }}/aliases/available/{{ item }}.aliases.bash"
-    dest: "{{ bash_it_repo_local_destination }}/aliases/enabled/{{ item }}.aliases.bash"
-    state: link
-  with_items: "{{ bash_it_aliases }}"
-  when: bash_it_aliases is defined
-
-- name: Install bash_it completions
-  file:
-    src: "{{ bash_it_repo_local_destination }}/completion/available/{{ item }}.completion.bash"
-    dest: "{{ bash_it_repo_local_destination }}/completion/enabled/{{ item }}.completion.bash"
-    state: link
-  with_items: "{{ bash_it_completions }}"
-  when: bash_it_completions is defined
+- name: Create init script
+  template:
+    src: bash_it.j2
+    dest: "{{ bash_it_repo_local_destination }}.init"

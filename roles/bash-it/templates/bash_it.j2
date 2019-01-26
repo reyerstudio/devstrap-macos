@@ -1,0 +1,9 @@
+{% for item in bash_it_aliases %}
+bash-it enable alias {{ item }}
+{% endfor %}
+{% for item in bash_it_plugins %}
+bash-it enable plugin {{ item }}
+{% endfor %}
+{% for item in bash_it_completions %}
+bash-it enable completion {{ item }}
+{% endfor %}

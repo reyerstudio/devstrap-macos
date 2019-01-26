@@ -2,3 +2,4 @@
 - include: repos.yml
 - include: vim.yml
 - include: bash.yml
+- include: iterm2.yml
