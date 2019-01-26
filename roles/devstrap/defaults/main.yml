@@ -1,0 +1,15 @@
+---
+devstrap_repo: "https://github.com/sestegra/devstrap-macos.git"
+devstrap_repo_version: master
+devstrap_repo_accept_hostkey: false
+devstrap_repo_local_destination: "{{ devstrap_base_path }}/devstrap-macos"
+
+playbooks_repo: "TODO"
+playbooks_repo_version: master
+playbooks_repo_accept_hostkey: false
+playbooks_repo_local_destination: "{{ devstrap_base_path }}/playbooks"
+
+devstrap_macos_path: "{{ devstrap_repo_local_destination }}"
+devstrap_playbooks_path: "{{ playbooks_repo_local_destination }}"
+devstrap_cmd_path: "{{ devstrap_macos_path }}/devstrap.sh"
+devstrap_bin_path: /usr/local/bin/devstrap

@@ -1,0 +1,40 @@
+---
+- name: Ensure bash_it repository is cloned locally.
+  git:
+    repo: "{{ bash_it_repo }}"
+    dest: "{{ bash_it_repo_local_destination }}"
+    version: "{{ bash_it_repo_version }}"
+    accept_hostkey: "{{ bash_it_repo_accept_hostkey }}"
+
+- name: Initialize bash_it directories
+  file:
+    path: "{{ bash_it_repo_local_destination }}/{{ item }}/enabled"
+    state: directory
+  with_items:
+    - "plugins"
+    - "aliases"
+    - "completion"
+
+- name: Install bash_it plugins
+  file:
+    src: "{{ bash_it_repo_local_destination }}/plugins/available/{{ item }}.plugin.bash"
+    dest: "{{ bash_it_repo_local_destination }}/plugins/enabled/{{ item }}.plugin.bash"
+    state: link
+  with_items: "{{ plugins }}"
+  when: plugins is defined
+
+- name: Install bash_it aliases
+  file:
+    src: "{{ bash_it_repo_local_destination }}/aliases/available/{{ item }}.aliases.bash"
+    dest: "{{ bash_it_repo_local_destination }}/aliases/enabled/{{ item }}.aliases.bash"
+    state: link
+  with_items: "{{ aliases }}"
+  when: aliases is defined
+
+- name: Install bash_it completions
+  file:
+    src: "{{ bash_it_repo_local_destination }}/completion/available/{{ item }}.completion.bash"
+    dest: "{{ bash_it_repo_local_destination }}/completion/enabled/{{ item }}.completion.bash"
+    state: link
+  with_items: "{{ completions }}"
+  when: completions is defined

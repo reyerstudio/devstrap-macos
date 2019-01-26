@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DEVSTRAP_BASE_PATH={{ devstrap_base_path }}
+DEVSTRAP_MACOS_PATH={{ devstrap_macos_path }}
+PLAYBOOKS_PATH={{ devstrap_playbooks_path }}
+PLAYBOOK=${1:-devstrap}.yml
+
+export ANSIBLE_NOCOWS=1
+export ANSIBLE_ROLES_PATH=$DEVSTRAP_MACOS_PATH/roles
+$DEVSTRAP_MACOS_PATH/devstrap.sh -p $PLAYBOOKS_PATH/$PLAYBOOK

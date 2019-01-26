@@ -1,0 +1,20 @@
+---
+- name: Ensure devstrap repository is cloned locally.
+  git:
+    repo: "{{ devstrap_repo }}"
+    dest: "{{ devstrap_repo_local_destination }}"
+    version: "{{ devstrap_repo_version }}"
+    accept_hostkey: "{{ devstrap_repo_accept_hostkey }}"
+
+- name: Ensure playbooks repository is cloned locally.
+  git:
+    repo: "{{ playbooks_repo }}"
+    dest: "{{ playbooks_repo_local_destination }}"
+    version: "{{ playbooks_repo_version }}"
+    accept_hostkey: "{{ playbooks_repo_accept_hostkey }}"
+
+- name: Install devstrap command
+  template:
+    src: devstrap
+    dest: "{{ devstrap_bin_path }}"
+    mode: preserve

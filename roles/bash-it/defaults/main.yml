@@ -1,0 +1,8 @@
+---
+bash_it_repo: "https://github.com/bash-it/bash-it.git"
+bash_it_repo_version: master
+bash_it_repo_accept_hostkey: false
+bash_it_repo_local_destination: "{{ devstrap_base_path }}/bash-it"
+bash_it_aliases: []
+bash_it_plugins: []
+bash_it_completions: []
