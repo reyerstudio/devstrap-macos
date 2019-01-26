@@ -20,21 +20,21 @@
     src: "{{ bash_it_repo_local_destination }}/plugins/available/{{ item }}.plugin.bash"
     dest: "{{ bash_it_repo_local_destination }}/plugins/enabled/{{ item }}.plugin.bash"
     state: link
-  with_items: "{{ plugins }}"
-  when: plugins is defined
+  with_items: "{{ bash_it_plugins }}"
+  when: bash_it_plugins is defined
 
 - name: Install bash_it aliases
   file:
     src: "{{ bash_it_repo_local_destination }}/aliases/available/{{ item }}.aliases.bash"
     dest: "{{ bash_it_repo_local_destination }}/aliases/enabled/{{ item }}.aliases.bash"
     state: link
-  with_items: "{{ aliases }}"
-  when: aliases is defined
+  with_items: "{{ bash_it_aliases }}"
+  when: bash_it_aliases is defined
 
 - name: Install bash_it completions
   file:
     src: "{{ bash_it_repo_local_destination }}/completion/available/{{ item }}.completion.bash"
     dest: "{{ bash_it_repo_local_destination }}/completion/enabled/{{ item }}.completion.bash"
     state: link
-  with_items: "{{ completions }}"
-  when: completions is defined
+  with_items: "{{ bash_it_completions }}"
+  when: bash_it_completions is defined
