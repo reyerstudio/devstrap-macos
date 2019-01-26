@@ -3,7 +3,7 @@ set -e
 
 DEVSTRAP_BASE_PATH=$HOME/devstrap
 
-DEVSTRAP_MACOS_GIT=https://github.com/sestegra/devstrap-macos.git
+DEVSTRAP_MACOS_GIT=https://github.com/reyerstudio/devstrap-macos.git
 DEVSTRAP_MACOS_PATH=$DEVSTRAP_BASE_PATH/devstrap-macos
 PLAYBOOKS_GIT=$1
 PLAYBOOKS_PATH=$DEVSTRAP_BASE_PATH/playbooks

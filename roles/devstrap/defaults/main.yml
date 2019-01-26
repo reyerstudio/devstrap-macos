@@ -1,5 +1,5 @@
 ---
-devstrap_repo: "https://github.com/sestegra/devstrap-macos.git"
+devstrap_repo: "https://github.com/reyerstudio/devstrap-macos.git"
 devstrap_repo_version: master
 devstrap_repo_accept_hostkey: false
 devstrap_repo_local_destination: "{{ devstrap_base_path }}/devstrap-macos"
