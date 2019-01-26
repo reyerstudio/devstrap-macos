@@ -1,0 +1,11 @@
+---
+- name: Ensure local bash is allowed
+  lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/bash
+    state: present
+  become: true
+
+- name: Ensure local bash to user
+  command: chsh -s /usr/local/bin/bash {{ ansible_user_id }}
+  become: true

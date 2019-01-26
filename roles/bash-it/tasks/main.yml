@@ -6,15 +6,6 @@
     version: "{{ bash_it_repo_version }}"
     accept_hostkey: "{{ bash_it_repo_accept_hostkey }}"
 
-- name: Initialize bash_it directories
-  file:
-    path: "{{ bash_it_repo_local_destination }}/{{ item }}/enabled"
-    state: directory
-  with_items:
-    - "plugins"
-    - "aliases"
-    - "completion"
-
 - name: Install bash_it plugins
   file:
     src: "{{ bash_it_repo_local_destination }}/plugins/available/{{ item }}.plugin.bash"

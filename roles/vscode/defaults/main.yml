@@ -1,0 +1,7 @@
+---
+vscode_cli_src: "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+vscode_cli_dest: /usr/local/bin/code
+vscode_settings_path: "~/Library/Application\ Support/Code/User/settings.json"
+
+vscode_extensions: []
+vscode_settings: {}

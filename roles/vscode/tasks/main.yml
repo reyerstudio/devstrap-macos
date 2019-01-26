@@ -1,0 +1,40 @@
+---
+- name: Ensuire code command
+  file:
+    src: "{{ vscode_cli_src }}"
+    dest: "{{ vscode_cli_dest }}"
+    state: link
+
+- name: Install extensions
+  shell: code --install-extension "{{ item }}"
+  with_items: "{{ vscode_extensions }}"
+  when: vscode_extensions
+
+- name: Stat current configuration
+  stat:
+    path: "{{ vscode_settings_path }}"
+  register: stat_result
+
+- name: Ensure current configuration
+  copy:
+    content: "{}"
+    dest: "{{ vscode_settings_path }}"
+  when: stat_result.stat.exists == False
+
+- name: Read current configuration
+  slurp:
+    src: "{{ vscode_settings_path }}"
+  register: vscode_current_settings
+
+- name: Append given configuration
+  set_fact:
+    vscode_current_settings: "{{ vscode_current_settings.content|b64decode|from_json | default({}) | combine(vscode_settings) }}"
+
+# - name: debug
+#   debug: 
+#     var: vscode_current_settings
+
+- name: Write settings
+  copy:
+    content: "{{ vscode_current_settings | to_nice_json }}"
+    dest: "{{ vscode_settings_path }}"
